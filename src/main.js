@@ -27,6 +27,71 @@ function nowSeconds() {
 
 }
 
+function setupWakeLock( app ) {
+
+    const audio = app.musicPlayer.element;
+    let wakeLock = null;
+
+    const shouldStayAwake = () =>
+        app.isRunning && ! audio.paused && document.visibilityState === 'visible';
+    const requestWakeLock = async () => {
+
+        if ( ! navigator.wakeLock || wakeLock || ! shouldStayAwake() ) return;
+
+        try {
+
+            const lock = await navigator.wakeLock.request( 'screen' );
+
+            if ( wakeLock || ! shouldStayAwake() ) {
+
+                await lock.release();
+                return;
+
+            }
+
+            wakeLock = lock;
+            lock.addEventListener( 'release', () => {
+
+                if ( wakeLock === lock ) wakeLock = null;
+
+            }, { once: true } );
+
+        } catch {
+
+            // Wake Lock is optional and may be denied by the browser or OS.
+
+        }
+
+    };
+    const releaseWakeLock = () => {
+
+        const lock = wakeLock;
+        wakeLock = null;
+        lock?.release().catch( () => {} );
+
+    };
+    const onVisibilityChange = () => {
+
+        if ( document.visibilityState === 'visible' ) requestWakeLock();
+        else releaseWakeLock();
+
+    };
+
+    audio.addEventListener( 'play', requestWakeLock );
+    audio.addEventListener( 'pause', releaseWakeLock );
+    document.addEventListener( 'visibilitychange', onVisibilityChange );
+
+    return () => {
+
+        audio.removeEventListener( 'play', requestWakeLock );
+        audio.removeEventListener( 'pause', releaseWakeLock );
+        document.removeEventListener( 'visibilitychange', onVisibilityChange );
+        releaseWakeLock();
+
+    };
+
+}
+
 // Match the native priority buckets: shader order first, followed by depth.
 function compareRenderItems( a, b ) {
 
@@ -97,6 +162,7 @@ export class DemoApp {
         this.isPaused = false;
         this.lastTime = 0;
         this.animationFrame = null;
+        this.disposeWakeLock = null;
 
         this.onResize = this.onResize.bind( this );
         this.onKeyDown = this.onKeyDown.bind( this );
@@ -141,6 +207,7 @@ export class DemoApp {
         this.musicPlayer.init();
         this.musicPlayer.onEnded( this.finish );
         this.musicPlayer.onError( this.finish );
+        this.disposeWakeLock = setupWakeLock( this );
 
         // Load data archive
         this.updateProgress( 'Loading data archive...' );
@@ -638,6 +705,8 @@ export class DemoApp {
         window.removeEventListener( 'resize', this.onResize );
         window.removeEventListener( 'keydown', this.onKeyDown );
         this.startButton.removeEventListener( 'click', this.start );
+        this.disposeWakeLock?.();
+        this.disposeWakeLock = null;
         this.musicPlayer.onEnded( null );
         this.musicPlayer.onError( null );
 
