@@ -4,10 +4,10 @@
 
 Browser port of the Threepixels Nature v2.0 demo ([source code](https://files.scene.org/view/demos/groups/threepixels/3px_src1.zip)).
 
-Choose **Click to begin** to start the demo and soundtrack.
-
 - `Space` pauses/resumes the demo and soundtrack.
 - `Left` / `Right` skip backward / forward five seconds.
 
 The player keeps the original 640×480 composition and always scales it to the
 largest 4:3 frame that fits the browser window.
+
+This port was made with Claude Opus 4.5 in January 2026 and finished with Codex 5.6 Sol Ultra in August 2026.
