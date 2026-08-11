@@ -136,6 +136,21 @@
         #loading.ready #startButton {
             display: block;
         }
+        .launch-source {
+            position: absolute;
+            left: 50%;
+            bottom: 24px;
+            width: max-content;
+            color: #526a61;
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            transform: translateX(-50%);
+            transition: color 0.2s;
+        }
+        .launch-source:hover {
+            color: #a9c8bb;
+        }
     </style>
 </head>
 <body>
@@ -151,6 +166,7 @@
                 <button id="startButton" type="button">Click to begin</button>
             </div>
         </div>
+        <a class="launch-source" href="https://github.com/mrdoob/3px_ntr2" target="_blank" rel="noopener noreferrer">github</a>
     </div>
     <div id="container"></div>
     <script type="importmap">
