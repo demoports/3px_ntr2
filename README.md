@@ -2,7 +2,7 @@
 
 [View the demo](https://mrdoob.github.io/3px_ntr2/)
 
-Browser port of the Threepixels Nature v2.0 demo.
+Browser port of the Threepixels Nature v2.0 demo ([source code](https://files.scene.org/view/demos/groups/threepixels/3px_src1.zip)).
 
 Choose **Click to begin** to start the demo and soundtrack.
 
