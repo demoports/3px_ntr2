@@ -656,6 +656,9 @@ export class FXFilter extends DemoEffect {
         positions.set( this.originalPositions );
         uvs.set( this.originalUVs );
 
+        this.distortionMesh.geometry.attributes.position.needsUpdate = true;
+        this.distortionMesh.geometry.attributes.uv.needsUpdate = true;
+
     }
 
     /**
