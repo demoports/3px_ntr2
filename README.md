@@ -10,4 +10,4 @@ Browser port of the Threepixels Nature v2.0 demo ([source code](https://files.sc
 The player keeps the original 640×480 composition and always scales it to the
 largest 4:3 frame that fits the browser window.
 
-This port was made with Claude Opus 4.5 in January 2026 and finished with Codex 5.6 Sol Ultra.
+This port was started with Claude Opus 4.5 and later finished with Codex 5.6 Sol Ultra.
