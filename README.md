@@ -1,4 +1,4 @@
-# Nature v2.0 (Three.js port)
+# Nature v2.0 (three.js port)
 
 [View the demo](https://demoports.github.io/3px_ntr2/)
 
