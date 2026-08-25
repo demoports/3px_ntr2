@@ -344,6 +344,7 @@ export class DemoApp {
         // Ready to start
         this.updateProgress( 'Ready!' );
         this.updateProgressAmount( 1 );
+        this.startButton.disabled = false;
         this.loadingElement.classList.add( 'ready' );
 
         this.startButton.addEventListener( 'click', this.start );

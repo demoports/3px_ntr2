@@ -113,22 +113,27 @@
         }
         #startButton {
             display: none;
-            min-width: 190px;
             margin: 0 auto;
-            padding: 11px 27px 10px;
+            padding: 7px 3px;
             color: #c9dbd3;
-            background: rgba(55, 83, 73, 0.14);
-            border: 1px solid rgba(139, 177, 161, 0.48);
-            font: 10px/1 "Trebuchet MS", Arial, sans-serif;
-            letter-spacing: 0.3em;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            font: 11px/1.5 "Trebuchet MS", Arial, sans-serif;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
+            text-decoration: underline;
+            text-underline-offset: 7px;
             cursor: pointer;
-            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+            transition: color 0.2s;
         }
-        #startButton:hover {
+        #startButton:not(:disabled):hover,
+        #startButton:not(:disabled):focus-visible {
             color: #f2f7f4;
-            background: rgba(89, 128, 112, 0.25);
-            box-shadow: 0 0 22px rgba(110, 158, 139, 0.12);
+        }
+        #startButton:disabled {
+            cursor: progress;
+            text-decoration: none;
         }
         #loading.ready .progress-bar,
         #loading.ready .status {
@@ -176,7 +181,7 @@
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="status" id="progress">Loading...</div>
-                <button id="startButton" type="button">Click to begin</button>
+                <button id="startButton" type="button" disabled>start</button>
             </div>
         </div>
         <div class="launcher-footer">
