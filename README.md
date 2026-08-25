@@ -1,7 +1,5 @@
 # Nature v2.0 (three.js port)
 
-[View the demo](https://demoports.github.io/3px_ntr2/)
-
 Browser port of the demo Nature v2.0 by Threepixels ([source code](https://files.scene.org/view/demos/groups/threepixels/3px_src1.zip)).
 
 - `Space` pauses/resumes the demo and soundtrack.
