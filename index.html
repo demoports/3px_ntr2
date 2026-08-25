@@ -119,7 +119,7 @@
             background: transparent;
             border: 0;
             outline: 0;
-            font: 11px/1.5 "Trebuchet MS", Arial, sans-serif;
+            font: 13px/1.5 "Trebuchet MS", Arial, sans-serif;
             letter-spacing: 0.22em;
             text-transform: uppercase;
             text-decoration: underline;
@@ -146,9 +146,9 @@
             position: absolute;
             left: 50%;
             bottom: 18px;
-            width: calc(100% - 32px);
+            width: calc(100% - 8px);
             color: #526a61;
-            font-size: 9px;
+            font-size: 11px;
             line-height: 1.6;
             letter-spacing: 0.14em;
             text-align: center;
@@ -168,6 +168,12 @@
         .launcher-footer a:hover,
         .launcher-footer a:focus-visible {
             color: #a9c8bb;
+        }
+        @media (max-width: 520px) {
+            .launcher-footer {
+                font-size: 10px;
+                letter-spacing: 0.04em;
+            }
         }
     </style>
 </head>
