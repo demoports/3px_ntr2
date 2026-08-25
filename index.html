@@ -137,19 +137,31 @@
         #loading.ready #startButton {
             display: block;
         }
-        .launch-source {
+        .launcher-footer {
             position: absolute;
             left: 50%;
-            bottom: 24px;
-            width: max-content;
+            bottom: 18px;
+            width: calc(100% - 32px);
             color: #526a61;
             font-size: 9px;
-            letter-spacing: 0.2em;
-            text-decoration: none;
+            line-height: 1.6;
+            letter-spacing: 0.14em;
+            text-align: center;
             transform: translateX(-50%);
+        }
+        .launcher-footer kbd {
+            color: #769287;
+            font: inherit;
+        }
+        .launcher-footer a {
+            display: inline-block;
+            margin-top: 8px;
+            color: #526a61;
+            text-decoration: none;
             transition: color 0.2s;
         }
-        .launch-source:hover {
+        .launcher-footer a:hover,
+        .launcher-footer a:focus-visible {
             color: #a9c8bb;
         }
     </style>
@@ -167,7 +179,12 @@
                 <button id="startButton" type="button">Click to begin</button>
             </div>
         </div>
-        <a class="launch-source" href="https://github.com/demoports/3px_ntr2" target="_blank" rel="noopener noreferrer">github</a>
+        <div class="launcher-footer">
+            <kbd>space</kbd> pause &nbsp;·&nbsp; <kbd>← →</kbd> seek
+            &nbsp;·&nbsp; <kbd>f</kbd> fullscreen &nbsp;·&nbsp; <kbd>esc</kbd> stop
+            <br>
+            <a href="https://github.com/demoports/3px_ntr2" target="_blank" rel="noopener noreferrer">github</a>
+        </div>
     </div>
     <div id="container"></div>
     <script type="importmap">

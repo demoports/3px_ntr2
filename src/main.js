@@ -565,6 +565,28 @@ export class DemoApp {
 
         if ( ! this.isRunning ) return;
 
+        if ( event.code === 'Escape' ) {
+
+            this.finish();
+            return;
+
+        }
+
+        if ( event.code === 'KeyF' ) {
+
+            if ( ! event.repeat && document.fullscreenEnabled ) {
+
+                const action = document.fullscreenElement
+                    ? document.exitFullscreen()
+                    : document.documentElement.requestFullscreen();
+                Promise.resolve( action ).catch( () => {} );
+
+            }
+
+            return;
+
+        }
+
         const seekOffset = KEY_SEEK_OFFSETS[ event.code ];
 
         if ( seekOffset !== undefined ) {
